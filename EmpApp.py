@@ -31,7 +31,7 @@ def about():
     return render_template('www.intellipaat.com')
 
 
-@app.route("/addemp", methods=['POST,GET'])
+@app.route("/addemp", methods=['POST,'])
 def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
@@ -78,7 +78,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return render_template('AddEmpOutput.html')
 
 
 if __name__ == '__main__':
