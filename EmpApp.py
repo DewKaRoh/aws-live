@@ -21,9 +21,9 @@ output = {}
 table = 'employee'
 
 
-@app.route("/submit", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('GetEmp.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -62,6 +62,9 @@ def AddEmp():
     return render_template('AddEmpOutput.html')
 
 
+@app.route("/submit", methods=['GET', 'POST'])
+def submit():
+    return render_template('AddEmp.html')
 
 
 if __name__ == '__main__':
