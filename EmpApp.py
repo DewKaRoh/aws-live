@@ -46,6 +46,10 @@ def backMain():
 def search():
     return render_template('DisplayEmp.html')
 
+@app.route("/editAndDeleteEmp", methods=['GET', 'POST'])
+def editAndDeleteEmp():
+    return render_template('EditAndDeleteEmp.html')
+
 
 @app.route("/addemp", methods=['POST', 'GET'])
 def AddEmp():
