@@ -32,50 +32,51 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Employee Register</h2>
-                    <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+                    <h2 class="title">Employee Information</h2>
+                    <form action="" autocomplete="on" method="POST" enctype="multipart/form-data">
                         <div class="input-group">
                             <input class="input--style-1" type="number" placeholder="Employee ID:" name="emp_id">
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="First Name:" name="first_name" id="first_name">
+                                    <input class="input--style-1 js-datepicker" type="text" placeholder="First Name:" name="first_name">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="Last Name:" name="last_name" id="last_name">
+                                    <input class="input--style-1 js-datepicker" type="text" placeholder="Last Name:" name="last_name">
                                 </div>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input class="input--style-1 js-datepicker" type="text" placeholder="Primary Skills::" name="pri_skill" id="pri_skill">
+                            <input class="input--style-1 js-datepicker" type="text" placeholder="Primary Skills::" name="pri_skill">
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="Location:" name="location" id="location">
+                                    <input class="input--style-1" type="text" placeholder="Location:" name="location">
                                 </div>
                             </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    Image: <input type=file id="emp_image_file" name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
+                                    Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
                                 </div>
                             </div>
                         </div>
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Update Database</button>
+                            <button class="btn btn--radius btn--green" type="submit">Go to edit & delete </button>
                         </div>
-                       <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" formaction="/searchEmp" type="submit">Search Employee</button>
-                        </div>
-                        <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" formaction="/backMain" type="submit">Back</button>
-                        </div>
+
                     </form>
+                    <div class="p-t-20">
+                        <button class="btn btn--radius btn--green" formaction="/searchEmp" type="submit">Back to Search Employee</button>
+                    </div>
+                    <div class="p-t-20">
+                        <button class="btn btn--radius btn--green" formaction="/backMain" type="submit">Back</button>
+                    </div>
                 </div>
             </div>
         </div>
