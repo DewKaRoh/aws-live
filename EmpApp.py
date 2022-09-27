@@ -73,10 +73,28 @@ def search():
 @app.route("/editAndDeleteEmp", methods=['GET', 'POST'])
 def editAndDeleteEmp():
     emp_id = request.form.get('emp_id')
-    first_name = request.form.get('first_name')
-    last_name = request.form.get('last_name')
-    pri_skill = request.form.get('pri_skill')
-    location = request.form.get('location')
+    cursor = db_conn.cursor()
+
+    query = "SELECT first_name FROM employee WHERE emp_id = '{}'".format(emp_id)
+    cursor.execute(query)
+    first_name = cursor.fetchone()
+    first_name = ''.join(first_name)
+
+    query2 = "SELECT last_name FROM employee WHERE emp_id = '{}'".format(emp_id)
+    cursor.execute(query2)
+    last_name = cursor.fetchone()
+    last_name = ''.join(last_name)
+
+    query3 = "SELECT pri_skill FROM employee WHERE emp_id = '{}'".format(emp_id)
+    cursor.execute(query3)
+    pri_skill = cursor.fetchone()
+    pri_skill = ''.join(pri_skill)
+
+
+    query4 = "SELECT location FROM employee WHERE emp_id = '{}'".format(emp_id)
+    cursor.execute(query4)
+    location = cursor.fetchone()
+    location = ''.join(location)
 
     return render_template('EditAndDeleteEmp.html',first_name = first_name, last_name = last_name, pri_skill = pri_skill, location = location,emp_id = emp_id)
 
@@ -93,18 +111,18 @@ def completeEdit():
 
     cursor.execute(update_sql, (first_name, last_name , pri_skill, location , emp_id))
     db_conn.commit()
-    return render_template('DisplayEmp.html',update_sql)
+    return render_template('DisplayEmp.html')
 
 @app.route("/completeEdit", methods=['GET', 'POST'])
 def completeDelete():
     emp_id = request.form.get('emp_id')
 
-    delete_sql = "Delete employee where emp_id = %s"
+    delete_sql = "Delete from employee where emp_id = %s"
     cursor = db_conn.cursor()
 
     cursor.execute(delete_sql, (emp_id))
     db_conn.commit()
-    return render_template('DisplayEmp.html',delete_sql)
+    return render_template('DisplayEmp.html')
 
 
 @app.route("/addemp", methods=['POST', 'GET'])
