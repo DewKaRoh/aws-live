@@ -35,34 +35,27 @@
                     <h2 class="title">Employee Information</h2>
                     <form action="/editAndDeleteEmp" autocomplete="on" method="POST" enctype="multipart/form-data">
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Employee ID:" name="emp_id">
+                            <input class="input--style-1" value="{{ emp_id }}" type="number" placeholder="Employee ID:" name="emp_id">
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="First Name:" name="first_name">
+                                    <input class="input--style-1 js-datepicker" value="{{ first_name }}" type="text" placeholder="First Name:" name="first_name" id="first_naame">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="Last Name:" name="last_name">
+                                    <input class="input--style-1 js-datepicker" value="{{ last_name }}" type="text" placeholder="Last Name:" name="last_name" id="last_name">
                                 </div>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input class="input--style-1 js-datepicker" type="text" placeholder="Primary Skills::" name="pri_skill">
+                            <input class="input--style-1 js-datepicker" type="text" value="{{ pri_skill }}" placeholder="Primary Skills::" name="pri_skill" id="pri_skill">
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="Location:" name="location">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
+                                    <input class="input--style-1" type="text" value="{{ location }}" placeholder="Location:" name="location" id="location">
                                 </div>
                             </div>
                         </div>
