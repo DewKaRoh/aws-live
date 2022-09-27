@@ -30,6 +30,14 @@ def home():
 def about():
     return render_template('www.intellipaat.com')
 
+@app.route("/registerEmp", methods=['GET', 'POST'])
+def submit():
+    return render_template('RegisterEmp.html')
+
+@app.route("/searchEmp", methods=['GET', 'POST'])
+def submit():
+    return render_template('SearchEmp.html')
+
 
 @app.route("/addemp", methods=['POST', 'GET'])
 def AddEmp():
@@ -94,15 +102,7 @@ def fetchdata():
     else:
         print("Invalid ID")
         return render_template('GetEmp.html')
-   
-
-@app.route("/registerEmp", methods=['GET', 'POST'])
-def submit():
-    return render_template('RegisterEmp.html')
-
-@app.route("/searchEmp", methods=['GET', 'POST'])
-def submit():
-    return render_template('SearchEmp.html')
+ 
 
 
 if __name__ == '__main__':
