@@ -94,11 +94,7 @@ def fetchdata():
     else:
         print("Invalid ID")
         return render_template('GetEmp.html')
-    
-
-@app.route("/submit", methods=['GET', 'POST'])
-def submit():
-    return render_template('RegisterEmp.html')
+   
 
 @app.route("/registerEmp", methods=['GET', 'POST'])
 def submit():
