@@ -100,6 +100,14 @@ def fetchdata():
 def submit():
     return render_template('RegisterEmp.html')
 
+@app.route("/searchEmp", methods=['GET', 'POST'])
+def submit():
+    return render_template('SearchEmp.html')
+
+@app.route("/searchEmp", methods=['GET', 'POST'])
+def submit():
+    return render_template('SearchEmp.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
