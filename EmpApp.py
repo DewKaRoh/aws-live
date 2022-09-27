@@ -31,11 +31,11 @@ def about():
     return render_template('www.intellipaat.com')
 
 @app.route("/registerEmp", methods=['GET', 'POST'])
-def submit():
+def registerEmp():
     return render_template('RegisterEmp.html')
 
 @app.route("/searchEmp", methods=['GET', 'POST'])
-def submit():
+def searchEmp():
     return render_template('SearchEmp.html')
 
 
