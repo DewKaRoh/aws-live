@@ -100,9 +100,9 @@ def fetchdata():
 def submit():
     return render_template('RegisterEmp.html')
 
-@app.route("/searchEmp", methods=['GET', 'POST'])
+@app.route("/registerEmp", methods=['GET', 'POST'])
 def submit():
-    return render_template('SearchEmp.html')
+    return render_template('RegisterEmp.html')
 
 @app.route("/searchEmp", methods=['GET', 'POST'])
 def submit():
