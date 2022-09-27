@@ -540,10 +540,10 @@
            box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
        }
 
-           .card-1 .card-heading {
-               background: url("C:/Users/User/Downloads/CC Assignment/CC Assignment/colorlib-regform-1/colorlib-regform-1/images/bg-head-02.jpg") center center/cover no-repeat;
-               padding-top: 210px;
-           }
+        .card-1 .card-heading {
+            background: url("{{ url_for('static',filename='bg-head-02.jpg') }}") center center/cover no-repeat;
+            padding-top: 210px;
+        }
 
            .card-1 .card-body {
                padding: 0 90px;
