@@ -38,6 +38,10 @@ def registerEmp():
 def searchEmp():
     return render_template('SearchEmp.html')
 
+@app.route("/backMain", methods=['GET', 'POST'])
+def backMain():
+    return render_template('HRMain.html')
+
 
 @app.route("/addemp", methods=['POST', 'GET'])
 def AddEmp():
