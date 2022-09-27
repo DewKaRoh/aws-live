@@ -23,7 +23,7 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('GetEmp.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -66,6 +66,39 @@ def AddEmp():
 def submit():
     return render_template('AddEmp.html')
 
+@app.route("/fetchdata", methods=['POST', 'GET'])
+def fetchdata():
+    emp_id = (request.form['emp_id']).lower()
+    check_sql = "SELECT emp_id FROM employee WHERE emp_id=(%s)"
+    cursor = db_conn.cursor()
+    cursor.execute(check_sql, (emp_id))
+    emp_id = re.sub('\W+','', str(cursor.fetchall()))
+    check_sql = "SELECT first_name FROM employee WHERE emp_id=(%s)"
+    cursor = db_conn.cursor()
+    cursor.execute(check_sql, (emp_id))
+    emp_fname = re.sub('\W+','', str(cursor.fetchall()))
+    check_sql = "SELECT last_name FROM employee WHERE emp_id=(%s)"
+    cursor = db_conn.cursor()
+    cursor.execute(check_sql, (emp_id))
+    emp_lname = re.sub('\W+','', str(cursor.fetchall()))
+    check_sql = "SELECT pri_skill FROM employee WHERE emp_id=(%s)"
+    cursor = db_conn.cursor()
+    cursor.execute(check_sql, (emp_id))
+    emp_interest = re.sub('\W+','', str(cursor.fetchall()))
+    check_sql = "SELECT location FROM employee WHERE emp_id=(%s)"
+    cursor = db_conn.cursor()
+    cursor.execute(check_sql, (emp_id))
+    emp_location = re.sub('\W+','', str(cursor.fetchall()))
+    check_sql = "SELECT check_in FROM employee WHERE emp_id=(%s)"
+    cursor = db_conn.cursor()
+    cursor.execute(check_sql, (emp_id))
+    emp_image_url = re.sub('\W+','', str(cursor.fetchall()))
+    if str(emp_fname) != "":
+        return render_template('GetEmpOutput.html', id=emp_id, fname=emp_fname, 
+        lname=emp_lname, interest=emp_interest, location=emp_location, image_url = emp_image_url)
+    else:
+        print("Invalid ID")
+        return render_template('GetEmp.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
