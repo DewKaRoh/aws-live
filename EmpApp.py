@@ -50,6 +50,10 @@ def search():
 def editAndDeleteEmp():
     return render_template('EditAndDeleteEmp.html')
 
+@app.route("/completeEdit", methods=['GET', 'POST'])
+def editAndDeleteEmp():
+    return render_template('DisplayEmp.html')
+
 
 @app.route("/addemp", methods=['POST', 'GET'])
 def AddEmp():
