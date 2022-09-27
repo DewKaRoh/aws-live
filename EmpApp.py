@@ -51,7 +51,7 @@ def editAndDeleteEmp():
     return render_template('EditAndDeleteEmp.html')
 
 @app.route("/completeEdit", methods=['GET', 'POST'])
-def editAndDeleteEmp():
+def completeEdit():
     return render_template('DisplayEmp.html')
 
 
