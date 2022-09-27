@@ -23,7 +23,7 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('GetEmp.html')
+    return render_template('RegisterEmp.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -98,7 +98,7 @@ def fetchdata():
 
 @app.route("/submit", methods=['GET', 'POST'])
 def submit():
-    return render_template('AddEmp.html')
+    return render_template('RegisterEmp.html')
 
 
 if __name__ == '__main__':
