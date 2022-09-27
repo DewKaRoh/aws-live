@@ -113,7 +113,7 @@ def completeEdit():
     db_conn.commit()
     return render_template('DisplayEmp.html')
 
-@app.route("/completeEdit", methods=['GET', 'POST'])
+@app.route("/completeDelete", methods=['GET', 'POST'])
 def completeDelete():
     emp_id = request.form.get('emp_id')
 
