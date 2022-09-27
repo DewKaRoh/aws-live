@@ -59,7 +59,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html')
+    return render_template('AddEmpOutput.html', name=emp_name)
 
 
 @app.route("/submit", methods=['GET', 'POST'])
