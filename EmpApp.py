@@ -66,6 +66,8 @@ def AddEmp():
 def submit():
     return render_template('AddEmp.html')
 
+
+
 @app.route("/fetchdata", methods=['POST', 'GET'])
 def fetchdata():
     emp_id = (request.form['emp_id']).lower()
@@ -99,6 +101,8 @@ def fetchdata():
     else:
         print("Invalid ID")
         return render_template('GetEmp.html')
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
