@@ -23,7 +23,7 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('GetEmp.html')
+    return render_template('AddEmp.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -31,7 +31,7 @@ def about():
     return render_template('www.intellipaat.com')
 
 
-@app.route("/addemp", methods=['POST', 'GET'])
+@app.route("/addemp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
@@ -55,50 +55,30 @@ def AddEmp():
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
         s3 = boto3.resource('s3')
 
+        try:
+            print("Data inserted in MySQL RDS... uploading image to S3...")
+            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
+            bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+            s3_location = (bucket_location['LocationConstraint'])
+
+            if s3_location is None:
+                s3_location = ''
+            else:
+                s3_location = '-' + s3_location
+
+            object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+                s3_location,
+                custombucket,
+                emp_image_file_name_in_s3)
+
+        except Exception as e:
+            return str(e)
+
     finally:
         cursor.close()
 
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
-
-@app.route("/fetchdata", methods=['POST', 'GET'])
-def fetchdata():
-    emp_id = (request.form['emp_id']).lower()
-    check_sql = "SELECT emp_id FROM employee WHERE emp_id=(%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(check_sql, (emp_id))
-    emp_id = re.sub('\W+','', str(cursor.fetchall()))
-    check_sql = "SELECT first_name FROM employee WHERE emp_id=(%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(check_sql, (emp_id))
-    emp_fname = re.sub('\W+','', str(cursor.fetchall()))
-    check_sql = "SELECT last_name FROM employee WHERE emp_id=(%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(check_sql, (emp_id))
-    emp_lname = re.sub('\W+','', str(cursor.fetchall()))
-    check_sql = "SELECT pri_skill FROM employee WHERE emp_id=(%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(check_sql, (emp_id))
-    emp_interest = re.sub('\W+','', str(cursor.fetchall()))
-    check_sql = "SELECT location FROM employee WHERE emp_id=(%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(check_sql, (emp_id))
-    emp_location = re.sub('\W+','', str(cursor.fetchall()))
-    check_sql = "SELECT check_in FROM employee WHERE emp_id=(%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(check_sql, (emp_id))
-    emp_image_url = re.sub('\W+','', str(cursor.fetchall()))
-    if str(emp_fname) != "":
-        return render_template('GetEmpOutput.html', id=emp_id, fname=emp_fname, 
-        lname=emp_lname, interest=emp_interest, location=emp_location, image_url = emp_image_url)
-    else:
-        print("Invalid ID")
-        return render_template('GetEmp.html')
-    
-
-@app.route("/submit", methods=['GET', 'POST'])
-def submit():
-    return render_template('AddEmp.html')
 
 
 if __name__ == '__main__':
