@@ -111,7 +111,7 @@ def completeEdit():
 
     cursor.execute(update_sql, (first_name, last_name , pri_skill, location , emp_id))
     db_conn.commit()
-    return render_template('DisplayEmp.html')
+    return render_template('SearchEmp.html')
 
 @app.route("/completeDelete", methods=['POST'])
 def completeDelete():
@@ -122,7 +122,7 @@ def completeDelete():
 
     cursor.execute(delete_sql, (emp_id))
     db_conn.commit()
-    return render_template('DisplayEmp.html')
+    return render_template('SearchEmp.html')
 
 
 @app.route("/addemp", methods=['POST', 'GET'])
