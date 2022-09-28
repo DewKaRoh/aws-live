@@ -98,7 +98,7 @@ def editAndDeleteEmp():
 
     return render_template('EditAndDeleteEmp.html',first_name = first_name, last_name = last_name, pri_skill = pri_skill, location = location,emp_id = emp_id)
 
-@app.route("/completeEdit", methods=['GET', 'POST'])
+@app.route("/completeEdit", methods=['POST'])
 def completeEdit():
     emp_id = request.form.get("emp_id")
     first_name = request.form.get("first_name")
@@ -113,7 +113,7 @@ def completeEdit():
     db_conn.commit()
     return render_template('DisplayEmp.html')
 
-@app.route("/completeDelete", methods=['GET', 'POST'])
+@app.route("/completeDelete", methods=['POST'])
 def completeDelete():
     emp_id = request.form.get("emp_id")
 
