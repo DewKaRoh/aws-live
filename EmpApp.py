@@ -100,11 +100,11 @@ def editAndDeleteEmp():
 
 @app.route("/completeEdit", methods=['GET', 'POST'])
 def completeEdit():
-    emp_id = request.form.get('emp_id')
-    first_name = request.form.get('first_name')
-    last_name = request.form.get('last_name')
-    pri_skill = request.form.get('pri_skill')
-    location = request.form.get('location')
+    emp_id = request.form.get("emp_id")
+    first_name = request.form.get("first_name")
+    last_name = request.form.get("last_name")
+    pri_skill = request.form.get("pri_skill")
+    location = request.form.get("location")
 
     update_sql = "Update employee set first_name = %s , last_name = %s , pri_skill = %s, location = %s where emp_id = %s"
     cursor = db_conn.cursor()
@@ -115,7 +115,7 @@ def completeEdit():
 
 @app.route("/completeDelete", methods=['GET', 'POST'])
 def completeDelete():
-    emp_id = request.form.get('emp_id')
+    emp_id = request.form.get("emp_id")
 
     delete_sql = "Delete from employee where emp_id = %s"
     cursor = db_conn.cursor()
